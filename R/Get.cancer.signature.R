@@ -165,22 +165,22 @@ Get.cancer.signature <- function(adj.pvalue,log2fc,max.num=FALSE) {
   }
   ###创建gene matrix####
 
-  cancer.list = c("Glioblastoma",
-                  "Gliomas","BRCA",
-                  "PDAC","Nasopharyngeal carcinoma",
-                  "Prostate cancer",
-                  "Lung adenocarcinoma",
-                  "liver cancaer HCC",
-                  "Kidney cancaer RCC",
-                  "Head_and_Neck_HNSCC",
+ cancer.list = c("Glioblastoma(GBM)",
+                  "Gliomas","Breast Cancer(BRCA)",
+                  "Pancreatic ductal adenocarcinoma(PDAC)","Nasopharyngeal carcinoma(NPC)",
+                  "Prostate cancer(PRAD)",
+                  "Lung adenocarcinoma(LUAD)",
+                  "liver cancaer(HCC)",
+                  "Kidney cancaer(RCC)",
+                  "Head and neck squamous cell carcinoma(HNSCC)",
                   "Osteosarcoma",
-                  "ALL",
-                  "Multiple_myeloma",
-                  "CML",
-                  "Neuroblastoma",
-                  "CRC",
-                  "Myeloproliferative_neoplasms",
-                  "Ovarian_cancer")
+                  "Acute lymphoblastic leukemia(ALL)",
+                  "Multiple myeloma(MM)",
+                  "Chronic myelogenous leukemia(CML)",
+                  "Neuroblastoma(NB)",
+                  "Colorectal cancer(CRC)",
+                  "Myeloproliferative neoplasms(MPN)",
+                  "Ovarian cancer(OV)")
   empty_matrix <- matrix(nrow = length(cancer.list), ncol = 2)
   colnames(empty_matrix) <- c("cancer", "gene_list")
   empty_matrix = as.data.frame(empty_matrix)
