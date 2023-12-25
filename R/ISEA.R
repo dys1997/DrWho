@@ -5,20 +5,22 @@
 #'
 #' @return Matrix containing human and mouse homologous genes
 #' @export
-
 mouse2human <- function(x){
-  human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl", host = "https://dec2021.archive.ensembl.org/")
-  mouse = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "mmusculus_gene_ensembl",host = "https://dec2021.archive.ensembl.org/")
-
-  genes_cyno = biomaRt::getLDS(attributes = c("external_gene_name"),
-                      filters = "external_gene_name",
-                      values = x , mart = mouse,
-                      attributesL = c("external_gene_name"),
-                      martL = human, uniqueRows=T
-  )
-  colnames(genes_cyno) = c("Mouse.Gene","Human.Gene")
-  return(genes_cyno)
+  homologene::homologene(x, inTax = 10090, outTax = 9606)
 }
+# mouse2human <- function(x){
+#   human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl", host = "https://dec2021.archive.ensembl.org/")
+#   mouse = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "mmusculus_gene_ensembl",host = "https://dec2021.archive.ensembl.org/")
+
+#   genes_cyno = biomaRt::getLDS(attributes = c("external_gene_name"),
+#                       filters = "external_gene_name",
+#                       values = x , mart = mouse,
+#                       attributesL = c("external_gene_name"),
+#                       martL = human, uniqueRows=T
+#   )
+#   colnames(genes_cyno) = c("Mouse.Gene","Human.Gene")
+#   return(genes_cyno)
+# }
 #' Convert zebrafish genes into corresponding human homologous genes
 #'
 #'
@@ -26,17 +28,20 @@ mouse2human <- function(x){
 #' @export
 #'
 zebrafish2human <- function(x){
-  human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl" ,host = "https://dec2021.archive.ensembl.org/")
-  zebrafish = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "drerio_gene_ensembl",host = "https://dec2021.archive.ensembl.org/")
-  genes_cyno = biomaRt::getLDS(attributes = c("external_gene_name"),
-                      filters = "external_gene_name",
-                      values = x , mart = zebrafish,
-                      attributesL = c("external_gene_name"),
-                      martL = human, uniqueRows=T
-  )
-  colnames(genes_cyno) = c("Zebrafish.Gene","Human.Gene")
-  return(genes_cyno)
+  homologene::homologene(x, inTax = 10090, outTax = 7955)
 }
+# zebrafish2human <- function(x){
+#   human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl" ,host = "https://dec2021.archive.ensembl.org/")
+#   zebrafish = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "drerio_gene_ensembl",host = "https://dec2021.archive.ensembl.org/")
+#   genes_cyno = biomaRt::getLDS(attributes = c("external_gene_name"),
+#                       filters = "external_gene_name",
+#                       values = x , mart = zebrafish,
+#                       attributesL = c("external_gene_name"),
+#                       martL = human, uniqueRows=T
+#   )
+#   colnames(genes_cyno) = c("Zebrafish.Gene","Human.Gene")
+#   return(genes_cyno)
+# }
 #' Enrichment analysis of differentially expressed genes based on cancer signature
 #'
 #'
