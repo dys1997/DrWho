@@ -60,12 +60,12 @@ ISEA <- function( DEG.gene.select,sig.mtx,species = "human") {
   }else if(species=="mouse"){
 
     mtx = mouse2human(DEG.gene.select)
-    DEG.gene.select = mtx$9606
+    DEG.gene.select = mtx$'9606'
     # DEG.gene.select = mouse2human(DEG.gene.select)
   }else if(species=="zebrafish"){
 
     mtx = zebrafish2human(DEG.gene.select)
-    DEG.gene.select = mtx$9606
+    DEG.gene.select = mtx$'9606'
     # DEG.gene.select = zebrafish2human(DEG.gene.select)
   }
   human.gene  <- system.file("data", "human.tsv", package = "ISEA")
