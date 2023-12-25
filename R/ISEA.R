@@ -29,7 +29,7 @@ mouse2human <- function(x){
 #' @export
 #'
 zebrafish2human <- function(x){
-  res = homologene::homologene(x, inTax = 10090, outTax = 7955)
+  res = homologene::homologene(x, inTax = 7955, outTax = 9606)
   return(res)
 }
 # zebrafish2human <- function(x){
@@ -59,14 +59,14 @@ ISEA <- function( DEG.gene.select,sig.mtx,species = "human") {
     DEG.gene.select=DEG.gene.select
   }else if(species=="mouse"){
 
-    #mtx = mouse2human(DEG.gene.select)
-    #DEG.gene.select = mtx$Human.Gene
-    DEG.gene.select = mouse2human(DEG.gene.select)
+    mtx = mouse2human(DEG.gene.select)
+    DEG.gene.select = mtx$9606
+    # DEG.gene.select = mouse2human(DEG.gene.select)
   }else if(species=="zebrafish"){
 
-    # mtx = zebrafish2human(DEG.gene.select)
-    # DEG.gene.select = mtx$Human.Gene
-    DEG.gene.select = zebrafish2human(DEG.gene.select)
+    mtx = zebrafish2human(DEG.gene.select)
+    DEG.gene.select = mtx$9606
+    # DEG.gene.select = zebrafish2human(DEG.gene.select)
   }
   human.gene  <- system.file("data", "human.tsv", package = "ISEA")
   human.gene = read.table(human.gene,sep = "\t",header = T)
