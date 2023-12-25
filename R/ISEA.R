@@ -7,8 +7,8 @@
 #' @export
 
 mouse2human <- function(x){
-  human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl" ,host = "https://dec2021.archive.ensembl.org/")
-  mouse = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "mmusculus_gene_ensembl",host = "https://dec2021.archive.ensembl.org/")
+  human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl" )
+  mouse = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "mmusculus_gene_ensembl")
 
   genes_cyno = biomaRt::getLDS(attributes = c("external_gene_name"),
                       filters = "external_gene_name",
@@ -26,8 +26,8 @@ mouse2human <- function(x){
 #' @export
 #'
 zebrafish2human <- function(x){
-  human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl" ,host = "https://dec2021.archive.ensembl.org/")
-  zebrafish = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "drerio_gene_ensembl",host = "https://dec2021.archive.ensembl.org/")
+  human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl" )
+  zebrafish = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "drerio_gene_ensembl")
   genes_cyno = biomaRt::getLDS(attributes = c("external_gene_name"),
                       filters = "external_gene_name",
                       values = x , mart = zebrafish,
