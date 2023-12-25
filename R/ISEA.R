@@ -6,7 +6,8 @@
 #' @return Matrix containing human and mouse homologous genes
 #' @export
 mouse2human <- function(x){
-  homologene::homologene(x, inTax = 10090, outTax = 9606)
+  res = homologene::homologene(x, inTax = 10090, outTax = 9606)
+  return(res)
 }
 # mouse2human <- function(x){
 #   human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl", host = "https://dec2021.archive.ensembl.org/")
@@ -28,7 +29,8 @@ mouse2human <- function(x){
 #' @export
 #'
 zebrafish2human <- function(x){
-  homologene::homologene(x, inTax = 10090, outTax = 7955)
+  res = homologene::homologene(x, inTax = 10090, outTax = 7955)
+  return(res)
 }
 # zebrafish2human <- function(x){
 #   human = biomaRt::useMart(biomart = "ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl" ,host = "https://dec2021.archive.ensembl.org/")
@@ -57,12 +59,14 @@ ISEA <- function( DEG.gene.select,sig.mtx,species = "human") {
     DEG.gene.select=DEG.gene.select
   }else if(species=="mouse"){
 
-    mtx = mouse2human(DEG.gene.select)
-    DEG.gene.select = mtx$Human.Gene
+    #mtx = mouse2human(DEG.gene.select)
+    #DEG.gene.select = mtx$Human.Gene
+    DEG.gene.select = mouse2human(DEG.gene.select)
   }else if(species=="zebrafish"){
 
-    mtx = zebrafish2human(DEG.gene.select)
-    DEG.gene.select = mtx$Human.Gene
+    # mtx = zebrafish2human(DEG.gene.select)
+    # DEG.gene.select = mtx$Human.Gene
+    DEG.gene.select = zebrafish2human(DEG.gene.select)
   }
   human.gene  <- system.file("data", "human.tsv", package = "ISEA")
   human.gene = read.table(human.gene,sep = "\t",header = T)
