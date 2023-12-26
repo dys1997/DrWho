@@ -127,7 +127,7 @@ ISEA.Plot <- function( sig.mtx,method="BH"){
   #     ggplot2::coord_flip() +
   #     ggplot2::theme_bw()
   # }
-  ggplot2::ggplot(res,ggplot2::aes(x=intersect_gene,y=reorder(cancer,intersect_gene)))+
+  ggplot2::ggplot(sig.mtx,ggplot2::aes(x=intersect_gene,y=reorder(cancer,intersect_gene)))+
   ggplot2::geom_point(ggplot2::aes(size=intersect_gene,color=method))+
   ggplot2::coord_cartesian(clip="off")+
   paletteer::scale_color_paletteer_c(palette = "grDevices::topo.colors",
