@@ -111,22 +111,33 @@ ISEA <- function( DEG.gene.select,sig.mtx,species = "human") {
 #' @export
 
 ISEA.Plot <- function( sig.mtx,method="BH"){
-  sig.mtx$cancer = factor(sig.mtx$cancer,levels = rev(sig.mtx$cancer))
-  if(method == "BH"){
-    # sig.mtx$cancer = factor(sig.mtx$cancer,levels = rev(sig.mtx$cancer))
-    ggplot2::ggplot(data = sig.mtx, mapping = ggplot2::aes(x = cancer, y = log10_BH)) +
-      ggplot2::geom_bar(stat = 'identity',fill="skyblue")+
-      ggplot2::labs(title="Cancer enrichment", x="cancer type",y = "-log10(BH)")+
-      ggplot2::coord_flip() +
-      ggplot2::theme_bw()
-  }else if(method == "bonferroni"){
+  # sig.mtx$cancer = factor(sig.mtx$cancer,levels = rev(sig.mtx$cancer))
+  # if(method == "BH"){
+  #   # sig.mtx$cancer = factor(sig.mtx$cancer,levels = rev(sig.mtx$cancer))
+  #   ggplot2::ggplot(data = sig.mtx, mapping = ggplot2::aes(x = cancer, y = log10_BH)) +
+  #     ggplot2::geom_bar(stat = 'identity',fill="skyblue")+
+  #     ggplot2::labs(title="Cancer enrichment", x="cancer type",y = "-log10(BH)")+
+  #     ggplot2::coord_flip() +
+  #     ggplot2::theme_bw()
+  # }else if(method == "bonferroni"){
 
-    ggplot2::ggplot(data = sig.mtx, mapping = ggplot2::aes(x = cancer, y = log10_bonferroni)) +
-      ggplot2::geom_bar(stat = 'identity',fill="skyblue")+
-      ggplot2::labs(title="Cancer enrichment", x="cancer type",y = "-log10(bonferroni)")+
-      ggplot2::coord_flip() +
-      ggplot2::theme_bw()
-  }
+  #   ggplot2::ggplot(data = sig.mtx, mapping = ggplot2::aes(x = cancer, y = log10_bonferroni)) +
+  #     ggplot2::geom_bar(stat = 'identity',fill="skyblue")+
+  #     ggplot2::labs(title="Cancer enrichment", x="cancer type",y = "-log10(bonferroni)")+
+  #     ggplot2::coord_flip() +
+  #     ggplot2::theme_bw()
+  # }
+  ggplot2::ggplot(res,ggplot2::aes(x=intersect_gene,y=reorder(cancer,intersect_gene)))+
+  ggplot2::geom_point(ggplot2::aes(size=intersect_gene,color=method))+
+  ggplot2::coord_cartesian(clip="off")+
+  paletteer::scale_color_paletteer_c(palette = "grDevices::topo.colors",
+                          name="p.adjust",
+                          labels = scales::scientific_format(scale = 6),
+                          limits = c(0, 0.05))+
+  ggplot2::theme_bw()+
+  ggplot2::scale_size_continuous(name="Count",
+                        range = c(1,10))+
+  ggplot2::labs(y="cancer signature",x="Count")
 
 
 }
