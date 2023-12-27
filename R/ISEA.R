@@ -129,7 +129,7 @@ ISEA.Plot <- function( sig.mtx,method="BH"){
     ggplot2::theme_bw()+
     ggplot2::scale_size_continuous(name="Count",
                           range = c(1,10))+
-    ggplot2::labs(y="cancer signature",x="Count")
+    ggplot2::labs(y="Cancer signature",x="Count")
   }else if(method == "bonferroni"){
     ggplot2::ggplot(sig.mtx,ggplot2::aes(x=intersect_gene,y=reorder(cancer,intersect_gene)))+
     ggplot2::geom_point(ggplot2::aes(size=intersect_gene,color=Bonferroni))+
@@ -141,7 +141,7 @@ ISEA.Plot <- function( sig.mtx,method="BH"){
     ggplot2::theme_bw()+
     ggplot2::scale_size_continuous(name="Count",
                           range = c(1,10))+
-    ggplot2::labs(y="cancer signature",x="Count")
+    ggplot2::labs(y="Cancer signature",x="Count")
 
     # ggplot2::ggplot(data = sig.mtx, mapping = ggplot2::aes(x = cancer, y = log10_bonferroni)) +
     #   ggplot2::geom_bar(stat = 'identity',fill="skyblue")+
