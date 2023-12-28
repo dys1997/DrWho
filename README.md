@@ -21,7 +21,7 @@ data  = readRDS("H:/SCAR_ZONG/Cancer/SCAR_Atlas_0686.rds")
 DimPlot(data)
 ```
 
-![Picture1](pic\Picture1.png)
+![Picture1](./pic/Picture1.png)
 
 ```R
 data$Group <- ifelse(grepl("Malignant", data$cell_type), "Malignant", "Normal")
@@ -29,7 +29,9 @@ Idents(data) = data$Group
 DimPlot(data)
 ```
 
-![Picture2](pic\Picture2.png)
+![Picture2](./pic/Picture2.png)
+
+##### Identification of Differentially Expressed Genes
 
 ```r
 DEG = FindMarkers(data,ident.1 = "Malignant",ident.2 = "Normal")
@@ -43,13 +45,13 @@ res = ISEA(DEG.gene.select = DEG.gene.select,sig.mtx = cancer.sig)
 DrWho::ISEA.Plot(res)
 ```
 
-![Picture3](pic\Picture3.png)
+![Picture3](./pic/Picture3.png)
 
 #### 4. Function Documentation
 
-![Picture4](pic\Picture4.png)
+![Picture4](./pic/Picture4.png)
 
-![Picture4](pic\Picture5.png)
+![Picture4](./pic/Picture5.png)
 
 #### 5. Citation
 
@@ -60,4 +62,3 @@ https://cran.r-project.org/web/packages/homologene/index.html（Ogan Mancarci [a
 #### 6. Contact Information
 
 If you have any questions, feel free to [contact us](https://github.com/dys1997/DrWho?tab=readme-ov-file).
-
