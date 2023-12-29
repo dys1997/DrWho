@@ -172,7 +172,7 @@ Get.cancer.signature <- function(adj.pvalue,log2fc,max.num=FALSE) {
                   "Lung adenocarcinoma(LUAD)",
                   "Liver cancer(HCC)",
                   "Kidney cancer(RCC)",
-                  "Head and neck squamous cell carcinoma(HNSCC)",
+                  "Head and neck squamous cell carcinoma(HNSC)",
                   "Osteosarcoma",
                   "Acute lymphoblastic leukemia(ALL)",
                   "Multiple myeloma(MM)",
