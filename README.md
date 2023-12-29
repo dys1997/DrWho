@@ -17,7 +17,7 @@ devtools::install_github("https://github.com/dys1997/DrWho.git")
 ```R
 library(Seurat)
 library(DrWho)
-data  = readRDS("H:/SCAR_ZONG/Cancer/SCAR_Atlas_0686.rds")
+data  <- readRDS("H:/SCAR_ZONG/Cancer/SCAR_Atlas_0686.rds")
 DimPlot(data)
 ```
 
@@ -25,7 +25,7 @@ DimPlot(data)
 
 ```R
 data$Group <- ifelse(grepl("Malignant", data$cell_type), "Malignant", "Normal")
-Idents(data) = data$Group
+Idents(data) <- data$Group
 DimPlot(data)
 ```
 
@@ -34,14 +34,14 @@ DimPlot(data)
 ##### Identification of Differentially Expressed Genes
 
 ```r
-DEG = FindMarkers(data,ident.1 = "Malignant",ident.2 = "Normal")
-DEG.used = DEG[DEG$avg_log2FC >2,]
-DEG.used = DEG.used[DEG$p_val < 0.01,]
+DEG <- FindMarkers(data,ident.1 = "Malignant",ident.2 = "Normal")
+DEG.used <- DEG[DEG$avg_log2FC >2,]
+DEG.used <- DEG.used[DEG$p_val < 0.01,]
 complete_rows <- complete.cases(DEG.used)
 DEG.used <- DEG.used[complete_rows, ]
-DEG.gene.select = rownames(DEG.used)
-cancer.sig = Get.top.signature(top.num = 200)
-res = ISEA(DEG.gene.select = DEG.gene.select,sig.mtx = cancer.sig)
+DEG.gene.select <- rownames(DEG.used)
+cancer.sig <- Get.top.signature(top.num = 200)
+res <- ISEA(DEG.gene.select = DEG.gene.select,sig.mtx = cancer.sig)
 DrWho::ISEA.Plot(res)
 ```
 
@@ -55,9 +55,7 @@ DrWho::ISEA.Plot(res)
 
 #### 5. Citation
 
-Hao and Hao et al. Integrated analysis of multimodal single-cell data. Cell (2021) [Seurat V4]
 
-https://cran.r-project.org/web/packages/homologene/index.html（Ogan Mancarci [aut, cre], Leon French [ctb]）
 
 #### 6. Contact Information
 
