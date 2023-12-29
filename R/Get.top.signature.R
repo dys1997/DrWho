@@ -203,7 +203,7 @@ Get.top.signature <- function(top.num=100) {
                   "Lung adenocarcinoma(LUAD)",
                   "Liver cancer(HCC)",
                   "Kidney cancer(RCC)",
-                  "Head and neck squamous cell carcinoma(HNSCC)",
+                  "Head and neck squamous cell carcinoma(HNSC)",
                   "Osteosarcoma",
                   "Acute lymphoblastic leukemia(ALL)",
                   "Multiple myeloma(MM)",
